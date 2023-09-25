@@ -1,0 +1,125 @@
+.register-main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+
+    /* background-image: linear-gradient(to right, #243949 0%, #517fa4 100%); */
+}
+.register-main .image-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
+
+}
+
+.register-main .image-div img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border-radius: 1rem;
+}
+
+.register-main .right-div {
+    /* background-color: darkgray; */
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    
+}
+
+.register-main .form-div {
+    /* border: 1px solid black; */
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    min-width: 40vw;
+    padding: 1rem;
+    /* color: white; */
+    box-shadow:
+    /* inset 0 -3em 3em rgba(0, 0, 0, 0.1), */
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+
+}
+
+.register-main .form-div h1{
+    color: black;
+}
+
+.register-main .form-div .inp-div {
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    /* min-width: 30vw; */
+
+}
+
+.register-main .form-div .inp-div input {
+    padding: .5rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.register-btn {
+    border-radius: 1rem;
+    padding: .5rem;
+    min-width: 2rem;
+    margin: 1rem;
+    background-color: blue;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-btn p {
+  color: white;
+  text-decoration: none;
+  /* text-align: center; */
+  margin-top: 1rem;
+}
+
+.register-main .form-div span {
+    color: blue;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.register-main .form-error {
+    color: red;
+}
+
+.register-main .form-div .inp-error {
+    border: 1px solid red;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.register-main .form-div .inp-error input {
+    padding: .5rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.register-main .form-div .inp-div.error {
+    border: 1px solid red;
+  }

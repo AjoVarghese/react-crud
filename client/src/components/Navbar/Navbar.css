@@ -1,0 +1,29 @@
+.nav-main {
+    background-image: linear-gradient(45deg, #a700ff,#4d19db);
+    padding-left: 2%;
+    padding-right: 8%;
+    box-sizing: border-box;
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    position: sticky;
+}
+
+.logo {
+    width: 150px;
+}
+
+nav ul {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 15px;
+}
