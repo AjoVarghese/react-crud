@@ -1,3 +1,4 @@
+
 const userSchema = require('../schema/userSchema')
 const { v4: uuidv4 } = require('uuid'); 
 
@@ -37,7 +38,6 @@ console.log('address',req.body);
         console.error(error,'err in add address');
         return res.status(500).json({ message: 'Internal server error' });
     }
-    
 
 }
 
@@ -47,7 +47,15 @@ exports.getAddress = (req, res) => {
     let addressData = {
         Address : data.Address
     }
-    console.log("addressDataaaaaaaa",addressData);
-    res.status(200).json(addressData)
+    if(addressData.Address.length === 0) {
+        res.status(200).json("No Addresses added")
+    } else {
+        console.log("addressDataaaaaaaa",addressData);
+        res.status(200).json(addressData)
+    }
+    
+   })
+   .catch((err) => {
+    res.status(400).json('error fetching address')
    })
 }
