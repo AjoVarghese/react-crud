@@ -3,8 +3,6 @@
     flex-direction: row;
     width: 100%;
     height: 100vh;
-
-    /* background-image: linear-gradient(to right, #243949 0%, #517fa4 100%); */
 }
 .register-main .image-div {
   display: flex;
@@ -23,45 +21,34 @@
 }
 
 .register-main .right-div {
-    /* background-color: darkgray; */
     width: 45%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    
 }
 
 .register-main .form-div {
-    /* border: 1px solid black; */
     border-radius: .5rem;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
     min-width: 40vw;
     padding: 1rem;
-    /* color: white; */
     box-shadow:
-    /* inset 0 -3em 3em rgba(0, 0, 0, 0.1), */
     0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-
 }
-
 .register-main .form-div h1{
     color: black;
 }
 
 .register-main .form-div .inp-div {
     border: 1px solid black;
-    padding: 1rem;
-    margin: 1rem;
+    padding: .5rem;
+    margin: .8rem;
     border-radius: .5rem;
     display: flex;
     flex-direction: column;
     text-align: start;
-    /* min-width: 30vw; */
 
 }
 
@@ -73,33 +60,22 @@
     background-color: transparent;
 }
 
-.register-btn {
-    border-radius: 1rem;
-    padding: .5rem;
-    min-width: 2rem;
-    margin: 1rem;
-    background-color: blue;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .register-btn p {
   color: white;
   text-decoration: none;
-  /* text-align: center; */
   margin-top: 1rem;
 }
 
 .register-main .form-div span {
-    color: blue;
+    color: #3B71CA;
     font-size: 1.1rem;
     cursor: pointer;
 }
 
 .register-main .form-error {
     color: red;
+    margin: 0;
+    padding: 0;
 }
 
 .register-main .form-div .inp-error {
@@ -123,3 +99,31 @@
 .register-main .form-div .inp-div.error {
     border: 1px solid red;
   }
+
+  .register-btn  {
+    display: flex;
+    justify-content: center;
+  }
+
+  .register-btn button {
+    padding: 1rem;
+    border: none;
+    background-color: #3B71CA;
+    color: white;
+    border-radius: .5rem;
+    width: 100%;
+  }
+
+  .have-account {
+    margin-top: .5rem;
+  }
+
+  @media (max-width: 768px) {
+    .register-main .image-div {
+        display: none; 
+    }
+
+    .register-main .right-div {
+        width: 100%; 
+    }
+}

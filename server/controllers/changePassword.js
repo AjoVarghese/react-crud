@@ -55,6 +55,7 @@ exports.changePasswordPost = async(req,res) => {
     })
     .catch((err) => {
         console.log('err in fetch user',err);
+        res.status(400).json('err in fetching user')
     })
 //     let newPassword = req.body.NewPassword
     

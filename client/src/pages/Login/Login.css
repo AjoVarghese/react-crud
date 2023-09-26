@@ -2,7 +2,6 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    /* background-image: linear-gradient(45deg, #a700ff,#4d19db); */
 }
 
 .login-main .left-div{
@@ -21,15 +20,11 @@
 }
 
 .login-main .form-div {
-     /* border: 1px solid black; */
      border-radius: .5rem;
      display: flex;
      flex-direction: column;
-     /* align-items: center; */
-     /* justify-content: center; */
      min-width: 40vw;
      padding: 1rem;
-     /* color: white; */
      box-shadow:
      0 0 0 2px rgb(255, 255, 255),
      0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
@@ -41,8 +36,8 @@
 
 .login-main .form-div .inp-div {
     border: 1px solid black;
-    padding: 1rem;
-    margin: 1rem;
+    padding: .5rem;
+    margin: .8rem;
     border-radius: .5rem;
     display: flex;
     flex-direction: column;
@@ -57,19 +52,10 @@
     background-color: transparent;
 }
 
-.login-btn {
-    border-radius: 1rem;
-    padding: .5rem;
-    min-width: 2rem;
-    margin: 1rem;
-    background-color: blue;
-    cursor: pointer;
-}
 
 .login-btn p {
     color: white;
     text-decoration: none;
-    /* font-size: 1.2rem; */
     margin-top: 1rem;
 }
 
@@ -89,7 +75,7 @@
 }
 
 .options span {
-    color: blue;
+    color: #3B71CA;
     cursor: pointer;
 }
 
@@ -99,4 +85,35 @@
 
   .login-main .form-error {
     color: red;
+    margin: 0;
+    padding: 0;
+}
+
+.login-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn button {
+    padding: 1rem;
+    border: none;
+    background-color: #3B71CA;
+    color: white;
+    border-radius: .5rem;
+    width: 100%;
+}
+
+.acc-register {
+    margin-top: .8rem;
+}
+
+
+@media (max-width: 768px) {
+    .login-main .left-div {
+        display: none;
+    }
+
+    .login-main .right-div {
+        width: 100%;
+    }
 }

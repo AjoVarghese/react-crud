@@ -1,22 +1,3 @@
-// import React from 'react'
-// import './Navbar.css'
-
-
-// function Navbar() {
-//   return (
-//     <div className='nav-main'>
-//         <nav>
-//             <img src='' alt=""  className='logo'/>
-//             <ul>
-//                 <li><p>Home</p></li>
-//                 <li><p>Profile</p></li>
-//             </ul>
-//         </nav>
-//     </div>
-//   )
-// }
-
-// export default Navbar
 import React, { useState } from 'react';
 import {
   MDBNavbar,
@@ -64,14 +45,30 @@ export default function Navbar() {
           <MDBCollapse navbar show={showNavNoTogglerSecond}>
             <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
               <MDBNavbarItem>
-                <MDBNavbarLink active aria-current='page' href='#'>
-                  Home
+                <MDBNavbarLink active aria-current='page'>
+                  <Link
+                   to="/"
+                   style={{  textDecoration: "none" , color:'#3B71CA'}}
+                  >
+                    Home
+                  </Link>
+                  
                 </MDBNavbarLink>
               </MDBNavbarItem>
-              
+              {
+                userData ? <MDBNavbarItem>
+                <MDBNavbarLink active aria-current='page'>
+                <Link
+                   to="/profile"
+                   style={{  textDecoration: "none" , color:'#3B71CA'}}
+                  >
+                    Profile
+                  </Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem> : ''
+              }
             </MDBNavbarNav>
             <MDBInputGroup tag="form" className='d-flex w-auto mb-3'>
-              {/* <input className='form-control' placeholder="Type query" aria-label="Search" type='Search' /> */}
               {
                 userData ? <MDBBtn outline onClick={logout}>Logout</MDBBtn>
                  : 
@@ -80,13 +77,11 @@ export default function Navbar() {
                     style={{  textDecoration: "none" }}
                   >
                  <MDBBtn outline >
-                   
                     Login
-                 
                  </MDBBtn>
                  </Link>
               }
-              
+               
             </MDBInputGroup>
           </MDBCollapse>
         </MDBContainer>

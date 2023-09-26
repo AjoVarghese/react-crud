@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const  { protect }  = require('../middleware/authMiddleware')
+
+
 const registerController = require('../controllers/registerController')
 const loginController = require('../controllers/loginController')
 
@@ -19,14 +22,14 @@ router.post('/login',loginController.loginPost)
 
 
 // router.post('/forgot-password',forgotPasswordController.forgotPasswordPost)
-router.post('/change-password', changePasswordController.changePasswordPost)
+router.route('/change-password').post(protect,changePasswordController.changePasswordPost)
 
 
-router.post('/edit-profile', editProfileController.editProfilePost)
-router.post('/image-upload',imageUploadController.imageUploadPost)
+router.route('/edit-profile').post(protect,editProfileController.editProfilePost)
+router.route('/image-upload').post(protect,imageUploadController.imageUploadPost)
 
-router.post('/add-address',addressController.addAddressPost)
-router.get('/get-address', addressController.getAddress)
-router.post('/delete-address', addressController.deleteAddress)
+router.route('/add-address').post(protect,addressController.addAddressPost)
+router.route('/get-address').get(protect, addressController.getAddress)
+router.route('/delete-address').post(protect, addressController.deleteAddress)
 
 module.exports = router;
