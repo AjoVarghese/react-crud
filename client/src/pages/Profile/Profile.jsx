@@ -26,16 +26,10 @@ import {
   MDBCardBody,
   MDBCardImage,
   MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem,
+  
   MDBInput,
 } from "mdb-react-ui-kit";
-import { MDBAccordion, MDBAccordionItem } from "mdb-react-ui-kit";
+import { MDBAccordion} from "mdb-react-ui-kit";
 import Address from "../../components/Address/Address";
 
 const changePasswordInitialValues = {
@@ -188,6 +182,7 @@ export default function ProfilePage() {
 
   return (
     <section style={{ backgroundColor: "#eee" }}>
+      <Navbar/>
        <Toaster />
       <MDBContainer className="py-5">
         <MDBRow>

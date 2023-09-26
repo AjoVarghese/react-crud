@@ -30,6 +30,16 @@ export const addressReducer = (state = {}, {type,payload}) => {
                 loading : true,
                 addressError : payload
                }
+
+               case ActionTypes.DELETE_ADDRESS_SUCCESS:
+                return {
+                    addressData : payload
+                }
+        case ActionTypes.DELETE_ADDRESS_FAILED:
+               return {
+                loading : true,
+                addressError : payload
+               }
         
         default : {
             return state

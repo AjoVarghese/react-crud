@@ -95,7 +95,7 @@ function Login() {
                     <p className='acc-register'>Don't have an account?<span onClick={(e) => {
                         navigate('/register')
                     }}>Register</span></p>
-                    <p className='forgot-password'>Forgot your password?</p>
+                    {/* <p className='forgot-password'>Forgot your password?</p> */}
                 </div>
                 </form>
              </div>

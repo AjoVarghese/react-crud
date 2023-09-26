@@ -11,6 +11,7 @@ const imageUploadController = require('../controllers/editProfileController')
 
 const addressController = require('../controllers/addressController')
 
+
 /* GET users listing. */
 
 router.post('/register',registerController.signupPost)
@@ -26,5 +27,6 @@ router.post('/image-upload',imageUploadController.imageUploadPost)
 
 router.post('/add-address',addressController.addAddressPost)
 router.get('/get-address', addressController.getAddress)
+router.post('/delete-address', addressController.deleteAddress)
 
 module.exports = router;

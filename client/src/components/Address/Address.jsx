@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 import ModalBox from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddressApi } from "../../api/api";
-import { getAddressAction } from "../../redux/actions/addressAction";
+import { deleteAddressAction, getAddressAction } from "../../redux/actions/addressAction";
 
 function Address({ userId }) {
   const userAddress = JSON.parse(localStorage.getItem("userInfo"))?.Address;
@@ -22,7 +22,7 @@ function Address({ userId }) {
   const addressData = useSelector((state) => state.addressReducer.addressData);
   console.log("addressData selector", addressData?.Address);
   const address = addressData?.Address;
-  console.log('ADDRESS',address?.length);
+  console.log("ADDRESS", address?.length);
 
   const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
@@ -30,6 +30,10 @@ function Address({ userId }) {
   const toggleModal = () => {
     setModal(true);
   };
+
+  const deleteAddress = (addressId,userId) => {
+      dispatch(deleteAddressAction(addressId,userId))
+  }
 
   useEffect(() => {
     dispatch(getAddressAction(userId));
@@ -50,6 +54,7 @@ function Address({ userId }) {
                       </span>{" "}
                       {/* Project Status */}
                     </MDBCardText>
+
                     <MDBCardText className="mb-2" style={{ textAlign: "left" }}>
                       Street
                     </MDBCardText>
@@ -112,13 +117,19 @@ function Address({ userId }) {
                       defaultValue={address.Pincode}
                       readonly
                     />
+                    <hr />
+                    <div className="d-flex align-items-center justify-content-end">
+                      <MDBBtn style={{ backgroundColor: "red" }}
+                      onClick={deleteAddress(address._id,userId)}
+                      >Delete</MDBBtn>
+                    </div>
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
             </>
           ))}
         </MDBRow>
-      ) : address && address.length === 0 ? (
+      ) : address === undefined ? (
         <MDBCard>
           <MDBCardBody>
             <MDBRow>

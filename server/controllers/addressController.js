@@ -59,3 +59,29 @@ exports.getAddress = (req, res) => {
     res.status(400).json('error fetching address')
    })
 }
+
+exports.deleteAddress = (req,res) => {
+    userSchema.updateOne({_id : req.params.userId},
+        {
+            $pull: { Address: { _id: req.params.addressId } }
+          },
+        )
+        .then(() => {
+            userSchema.findOne({_id : req.params.userId}).then((data) => {
+                console.log(data);
+                let addressData = {
+                    Address : data.Address
+                }
+                if(addressData.Address.length === 0) {
+                    res.status(200).json("No Addresses added del")
+                } else {
+                    console.log("addressDataaaaaaaa del",addressData);
+                    res.status(200).json(addressData)
+                }
+                
+               })
+               .catch((err) => {
+                res.status(400).json('error fetching addres s')
+               })
+        })
+}

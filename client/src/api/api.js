@@ -45,3 +45,12 @@ export const addAddressApi = ( Street, City, State, Country, Pincode, userId) =>
 export const getAddressApi = (userId) => {
   return API.get("/get-address?id="+userId, config)
 }
+
+
+export const deleteAddressApi = (addressId,userId) => {
+  const queryParams = {
+    addressId: addressId,
+    userId: userId
+  };
+  return API.get("/delete-address",{queryParams},config)
+}

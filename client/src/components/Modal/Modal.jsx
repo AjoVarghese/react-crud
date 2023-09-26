@@ -43,7 +43,7 @@ export default function ModalBox({ closeModal, userId }) {
 
       console.log('address data',data.data);
       dispatch(addAddressAction(data.data))
-      // closeModal(false);
+      closeModal(false);
       // userData.Address = data?.data.Address
       // localStorage.setItem('userInfo', JSON.stringify(userData));
       

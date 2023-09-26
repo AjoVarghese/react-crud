@@ -1,4 +1,4 @@
-import { getAddressApi } from "../../api/api";
+import { deleteAddressApi, getAddressApi } from "../../api/api";
 import { ActionTypes } from "../constants/actionTypes";
 
 export const addAddressAction = (result) => async(dispatch) => {
@@ -28,6 +28,22 @@ export const getAddressAction = (userId) => async(dispatch) => {
     .catch((err) => {
         dispatch({
             type : ActionTypes.GET_ADDRESS_FAILED,
+            payload : err
+        })
+    })
+}
+
+export const deleteAddressAction = (addressId,userId) => async(dispatch) =>{
+    deleteAddressApi(addressId,userId).then((data) => {
+        console.log('delete address api',data);
+        dispatch({
+            type : ActionTypes.DELETE_ADDRESS_SUCCESS,
+            payload : data.data
+        })
+    })
+    .catch((err) => {
+        dispatch({
+            type : ActionTypes.DELETE_ADDRESS_FAILED,
             payload : err
         })
     })
