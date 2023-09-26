@@ -61,6 +61,7 @@ exports.getAddress = (req, res) => {
 }
 
 exports.deleteAddress = (req,res) => {
+    console.log('add del req', req.query);
     userSchema.updateOne({_id : req.params.userId},
         {
             $pull: { Address: { _id: req.params.addressId } }

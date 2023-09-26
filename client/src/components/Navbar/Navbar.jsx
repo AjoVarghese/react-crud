@@ -22,8 +22,11 @@ export default function Navbar() {
 
   const logout = () => {
      localStorage.removeItem("userInfo")
-     navigate('/login')
      toast.success("Logged out successfully");
+     setTimeout(() => {
+      navigate('/');
+    }, 2000);
+     
   }
 
   return (
@@ -31,7 +34,7 @@ export default function Navbar() {
     <Toaster />
       <MDBNavbar expand='lg' light bgColor='light'>
         <MDBContainer fluid>
-          <MDBNavbarBrand href='#'>Logo</MDBNavbarBrand>
+          <MDBNavbarBrand href='#'>User Management</MDBNavbarBrand>
           <MDBNavbarToggler
             type='button'
             data-target='#navbarTogglerDemo02'

@@ -1,0 +1,22 @@
+.home-main {
+    height: 100vh;
+    background-color:  #DBF3FA;
+  }
+
+  .nav-header {
+    height: 20vh;
+  }
+  
+  .home-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+  }
+
+  .home-content h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

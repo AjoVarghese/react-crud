@@ -7,6 +7,7 @@ import { registerApi } from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
+import { toast, Toaster } from 'react-hot-toast';
 
 const initialValues = {
   name: "",
@@ -37,7 +38,10 @@ function Register() {
         registerApi(Name, Email, Mobile, Password).then((result) => {
           console.log("result", result.data);
           dispatch(userRegister(result)).then(() => {
+            toast.success("Account registered successfully🎉😀");
+            setTimeout(() => {
             navigate("/login");
+            },1500)
           });
         });
         action.resetForm();
@@ -55,6 +59,7 @@ function Register() {
 
   return (
     <div className="register-main">
+       <Toaster />
       <div className="image-div">
         <img src={RegisterCover} alt="" />
       </div>

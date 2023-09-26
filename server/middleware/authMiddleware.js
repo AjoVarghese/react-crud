@@ -1,11 +1,10 @@
 const asynchandler = require('express-async-handler')
 const jwt = require('jsonwebtoken')
-const userSchema = require('../schema/userSchema')
 require('dotenv').config()
 
 const protect = asynchandler(async (req, res, next) => {
     console.log('auth protect function');
-    let token
+    console.log('headers',req.headers.authorization);
     
     if (
       req.headers.authorization &&

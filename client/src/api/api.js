@@ -7,6 +7,7 @@ const config = {
   },
 };
 const user = JSON.parse(localStorage.getItem("userInfo"));
+console.log('API user token',user?.token);
 
 const configToken = {
   headers: {
@@ -54,9 +55,5 @@ export const getAddressApi = (userId) => {
 
 
 export const deleteAddressApi = (addressId,userId) => {
-  const queryParams = {
-    addressId: addressId,
-    userId: userId
-  };
-  return API.get("/delete-address",{queryParams},configToken)
+  return API.post(`/delete-address?addressId=${addressId}&userId=${userId}`,configToken)
 }
