@@ -40,7 +40,7 @@ export default function ProfilePage() {
   const [image, setImage] = useState("");
   const [editProfile, setEditProfile] = useState(false);
   const [updating, setUpdating] = useState(false);
-  const [editing, setEditing] = useState(false)
+  const [editing, setEditing] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -58,17 +58,16 @@ export default function ProfilePage() {
   };
 
   const buttonStyles = {
-    backgroundColor: buttonText === "Cancel" ? "red" : "", // Text color
+    backgroundColor: buttonText === "Cancel" ? "red" : "",
   };
 
   const profileImage = useSelector(
     (state) => state.imageUploadReducer.imageData
   );
-  console.log("PofileImage", profileImage);
+
   const profileDetails = useSelector(
     (state) => state.editProfileReducer.profileData
   );
-  console.log("profile detaisl", profileDetails);
 
   const userData = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -85,7 +84,6 @@ export default function ProfilePage() {
   //change DP
   const handleClick = (e) => {
     setUpdating(true);
-    console.log("img upload");
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", image);
@@ -96,11 +94,8 @@ export default function ProfilePage() {
       body: formData,
     })
       .then((res) => res.json())
-      .catch((err) => {
-        console.log("cloud err", err);
-      })
+      .catch((err) => {})
       .then((data) => {
-        console.log("image dataa url", data.secure_url);
         const imageUrl = data.secure_url;
         const userData = JSON.parse(localStorage.getItem("userInfo"));
         userData.ProfileImage = imageUrl;
@@ -108,26 +103,21 @@ export default function ProfilePage() {
 
         imageUploadApi(userData.id, data.secure_url)
           .then((result) => {
-            console.log("resulttttttt", result.data);
-
             dispatch(imageUpload(result.data));
             toast("Profile Image updated scuccessfully  😀");
             setImage("");
             setUpdating(false);
-            
           })
           .catch((err) => {
-            console.log("err in image upload", err);
             toast("Error while updating profile image  ☹️");
             setImage("");
             setUpdating(false);
           });
       })
       .catch((err) => {
-        console.log("clouddd err", err);
         toast("Error while updating profile image ☹️");
-            setImage("");
-            setUpdating(false);
+        setImage("");
+        setUpdating(false);
       });
   };
 
@@ -139,13 +129,11 @@ export default function ProfilePage() {
       const NewPassword = values.newPassword;
       changePasswordApi(CurrentPassword, NewPassword, userData?.id)
         .then((data) => {
-          console.log("chg pwd data", data);
           toast.success(data.data);
           setAccordionVisible(false);
           setButtonText("Change Password");
         })
         .catch((err) => {
-          console.log("chg pwd err", err);
           toast.error(err.response.data);
           setAccordionVisible(true);
           setButtonText("Cancel");
@@ -161,19 +149,14 @@ export default function ProfilePage() {
     mobile: userData?.Mobile,
   };
 
+  //edit profile
   const profileFormik = useFormik({
-   
-    
     initialValues: profileInitialValues,
     validationSchema: profileEditSchema,
-    
     onSubmit: (values, action) => {
-      setEditing(true)
-      console.log("edit values", values);
+      setEditing(true);
       editProfileApi(values.name, values.email, values.mobile, userData.id)
         .then((result) => {
-          console.log("updated profile data", result.data);
-          
           const localStorageData = JSON.parse(localStorage.getItem("userInfo"));
 
           localStorageData.Name = result.data.Name;
@@ -183,19 +166,17 @@ export default function ProfilePage() {
           localStorage.setItem("userInfo", JSON.stringify(localStorageData));
           dispatch(editProfileAction(result.data));
           toast.success("Profile updated successfully😃");
-          setEditing(false)
+          setEditing(false);
           setEditProfile(false);
         })
         .catch((err) => {
           toast.success("Profile not updated☹️");
-          
-
         });
     },
   });
 
   return (
-    <section style={{ backgroundColor: "#DBF3FA",height:'120vh'}}>
+    <section style={{ backgroundColor: "#DBF3FA", height: "120vh" }}>
       <Navbar />
       <Toaster />
       <MDBContainer className="py-5">
@@ -393,8 +374,8 @@ export default function ProfilePage() {
                     </MDBCol>
                   </MDBRow>
                   <hr />
-                  
-                    <MDBBtn
+
+                  <MDBBtn
                     className="mt-4"
                     onClick={(e) => {
                       setEditProfile(true);
@@ -402,8 +383,6 @@ export default function ProfilePage() {
                   >
                     Edit Profile
                   </MDBBtn>
-                  
-                  
                 </MDBCardBody>
               </MDBCard>
             ) : (
@@ -426,7 +405,10 @@ export default function ProfilePage() {
                         />
                         {profileFormik.errors.name &&
                           profileFormik.touched.name && (
-                            <p className="form-error" style={{ textAlign: "left", color: "red" }}>
+                            <p
+                              className="form-error"
+                              style={{ textAlign: "left", color: "red" }}
+                            >
                               {profileFormik.errors.name}
                             </p>
                           )}
@@ -449,8 +431,11 @@ export default function ProfilePage() {
                             onChange={profileFormik.handleChange}
                           />
                           {profileFormik.errors.email &&
-                            profileFormik.touched.email  && (
-                              <p className="form-error" style={{ textAlign: "left", color: "red" }}>
+                            profileFormik.touched.email && (
+                              <p
+                                className="form-error"
+                                style={{ textAlign: "left", color: "red" }}
+                              >
                                 {profileFormik.errors.email}
                               </p>
                             )}
@@ -474,7 +459,10 @@ export default function ProfilePage() {
                         />
                         {profileFormik.errors.mobile &&
                           profileFormik.touched.mobile && (
-                            <p className="form-error" style={{ textAlign: "left", color: "red" }}>
+                            <p
+                              className="form-error"
+                              style={{ textAlign: "left", color: "red" }}
+                            >
                               {profileFormik.errors.mobile}
                             </p>
                           )}
@@ -490,27 +478,26 @@ export default function ProfilePage() {
                     >
                       Cancel
                     </MDBBtn>
-                    {
-                      editing ? 
+                    {editing ? (
                       <MDBBtn disabled>
-                      <MDBSpinner
-                        grow
-                        size="sm"
-                        role="status"
-                        tag="span"
-                        className="me-2"
-                      />
-                      Loading...
-                    </MDBBtn> :
+                        <MDBSpinner
+                          grow
+                          size="sm"
+                          role="status"
+                          tag="span"
+                          className="me-2"
+                        />
+                        Loading...
+                      </MDBBtn>
+                    ) : (
                       <MDBBtn
-                      style={{ marginLeft: "2rem" }}
-                      className="mt-4"
-                      type="submit"
-                    >
-                      Save Changes
-                    </MDBBtn>
-                    }
-                    
+                        style={{ marginLeft: "2rem" }}
+                        className="mt-4"
+                        type="submit"
+                      >
+                        Save Changes
+                      </MDBBtn>
+                    )}
                   </MDBCardBody>
                 </form>
               </MDBCard>

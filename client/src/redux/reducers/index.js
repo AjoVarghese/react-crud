@@ -5,11 +5,11 @@ import { editProfileReducer, imageUploadReducer } from "./user/profileReducer";
 import { addressReducer } from "./user/addressReducer";
 
 const reducers = combineReducers({
-  registerReducer : registerReducer,
-  loginReducer : loginReducer,
-  imageUploadReducer : imageUploadReducer,
-  editProfileReducer : editProfileReducer,
-  addressReducer : addressReducer,
-})
+  registerReducer: registerReducer,
+  loginReducer: loginReducer,
+  imageUploadReducer: imageUploadReducer,
+  editProfileReducer: editProfileReducer,
+  addressReducer: addressReducer,
+});
 
-export default reducers
+export default reducers;

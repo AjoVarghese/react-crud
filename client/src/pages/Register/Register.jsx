@@ -7,7 +7,7 @@ import { registerApi } from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
-import { toast, Toaster } from 'react-hot-toast';
+import { toast, Toaster } from "react-hot-toast";
 
 const initialValues = {
   name: "",
@@ -24,7 +24,6 @@ function Register() {
   const userRegisterData = useSelector(
     (state) => state.registerReducer.registerData
   );
-  console.log("userRegData", userRegisterData);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -36,12 +35,11 @@ function Register() {
         const Mobile = values.mobile;
         const Password = values.password;
         registerApi(Name, Email, Mobile, Password).then((result) => {
-          console.log("result", result.data);
           dispatch(userRegister(result)).then(() => {
             toast.success("Account registered successfully🎉😀");
             setTimeout(() => {
-            navigate("/login");
-            },1500)
+              navigate("/login");
+            }, 1500);
           });
         });
         action.resetForm();
@@ -59,7 +57,7 @@ function Register() {
 
   return (
     <div className="register-main">
-       <Toaster />
+      <Toaster />
       <div className="image-div">
         <img src={RegisterCover} alt="" />
       </div>

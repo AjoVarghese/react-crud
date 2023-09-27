@@ -8,7 +8,7 @@ import { loginApi } from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../redux/actions/loginAction";
 import { ActionTypes } from "../../redux/constants/actionTypes";
-import { toast, Toaster } from 'react-hot-toast';
+import { toast, Toaster } from "react-hot-toast";
 
 const initialValues = {
   email: "",
@@ -20,28 +20,25 @@ function Login() {
   const dispatch = useDispatch();
 
   const userLoginData = useSelector((state) => state.loginReducer.loginData);
-  console.log(userLoginData);
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: loginSchema,
       onSubmit: (values, action) => {
-        console.log(values);
         const Email = values.email;
         const Password = values.password;
 
         loginApi(Email, Password)
           .then((result) => {
-            console.log("result", result.data);
             dispatch(userLogin(result.data)).then(() => {
               toast.success("Logged in successfully 🎉😀");
               setTimeout(() => {
-              navigate("/");
-              },1500)
+                navigate("/");
+              }, 1500);
             });
           })
           .catch((err) => {
-            console.log("err in log", err.response.data);
             toast.error(err.response.data);
             dispatch({
               type: ActionTypes.LOGIN_FAILED,
@@ -53,7 +50,7 @@ function Login() {
     });
   return (
     <div className="login-main">
-       <Toaster />
+      <Toaster />
       <div className="left-div">
         <img src={LoginCover} alt="" />
       </div>

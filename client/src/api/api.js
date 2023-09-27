@@ -1,5 +1,7 @@
 import axios from "axios";
-const API = axios.create({ baseURL: "https://react-crud-muds.onrender.com/api/user" });
+const API = axios.create({
+  baseURL: "https://react-crud-muds.onrender.com/api/user",
+});
 
 const config = {
   headers: {
@@ -7,7 +9,6 @@ const config = {
   },
 };
 const user = JSON.parse(localStorage.getItem("userInfo"));
-console.log('API user token',user?.token);
 
 const configToken = {
   headers: {
@@ -37,7 +38,6 @@ export const editProfileApi = (Name, Email, Mobile, userId) => {
 };
 
 export const changePasswordApi = (CurrentPassword, NewPassword, userId) => {
-  console.log(CurrentPassword,NewPassword);
   return API.post(
     "/change-password?id=" + userId,
     { CurrentPassword, NewPassword, userId },
@@ -45,15 +45,28 @@ export const changePasswordApi = (CurrentPassword, NewPassword, userId) => {
   );
 };
 
-export const addAddressApi = ( Street, City, State, Country, Pincode, userId) => {
-  return API.post("/add-address?id="+userId, { Street, City, State, Country, Pincode}, configToken)
-}
+export const addAddressApi = (
+  Street,
+  City,
+  State,
+  Country,
+  Pincode,
+  userId
+) => {
+  return API.post(
+    "/add-address?id=" + userId,
+    { Street, City, State, Country, Pincode },
+    configToken
+  );
+};
 
 export const getAddressApi = (userId) => {
-  return API.get("/get-address?id="+userId, configToken)
-}
+  return API.get("/get-address?id=" + userId, configToken);
+};
 
-
-export const deleteAddressApi = (addressId,userId) => {
-  return API.post(`/delete-address?addressId=${addressId}&userId=${userId}`,configToken)
-}
+export const deleteAddressApi = (addressId, userId) => {
+  return API.post(
+    `/delete-address?addressId=${addressId}&userId=${userId}`,
+    configToken
+  );
+};

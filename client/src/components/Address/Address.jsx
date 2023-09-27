@@ -18,12 +18,9 @@ import { deleteAddressAction, getAddressAction } from "../../redux/actions/addre
 
 function Address({ userId }) {
   const userAddress = JSON.parse(localStorage.getItem("userInfo"))?.Address;
-  console.log(userAddress, "fdcf");
 
   const addressData = useSelector((state) => state.addressReducer.addressData);
-  console.log("addressData selector", addressData?.Address);
   const address = addressData?.Address;
-  console.log("ADDRESS", address);
 
   const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
@@ -32,9 +29,6 @@ function Address({ userId }) {
     setModal(true);
   };
 
-  const deleteAddress = (addressId,userId) => {
-      dispatch(deleteAddressAction(addressId,userId))
-  }
 
   useEffect(() => {
     dispatch(getAddressAction(userId));
@@ -50,7 +44,6 @@ function Address({ userId }) {
             <MDBCardBody>
               <MDBCardText className="mb-4">
                 <span className="text-primary font-italic me-1">Address</span>
-                {/* Project Status */}
               </MDBCardText>
 
               <MDBCardText className="mb-2" style={{ textAlign: "left" }}>
@@ -113,14 +106,6 @@ function Address({ userId }) {
                 readOnly
               />
               <hr />
-              {/* <div className="d-flex align-items-center justify-content-end">
-                <MDBBtn
-                  style={{ backgroundColor: "red" }}
-                  onClick={() => deleteAddress(address[0]._id, userId)}
-                >
-                  Delete
-                </MDBBtn>
-              </div> */}
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
